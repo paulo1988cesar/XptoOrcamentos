@@ -1,0 +1,36 @@
+﻿@model ServicoViewModelList
+
+<div class="container-fluid small">
+    <a asp-action="Create" asp-controller="Servico" class="btn btn-outline-info">Novo Serviço</a>
+    <hr />
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th>Cód</th>
+                        <th>Serviço</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model.Servicos != null)
+                    {
+                        foreach (var item in Model.Servicos)
+                        {
+                            <tr>
+                                <td>@item.Id</td>
+                                <td>@item.Nome</td>
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        <tr>
+                            <td colspan="2" class="text-center">Não existem dados cadastrados</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

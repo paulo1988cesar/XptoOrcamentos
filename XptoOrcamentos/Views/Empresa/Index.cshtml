@@ -1,0 +1,38 @@
+﻿@model XptoOrcamentos.Models.Empresa.EmpreaViewModel
+
+<div class="container-fluid small">
+    <a asp-action="Create" asp-controller="Empresa" class="btn btn-outline-info">Nova Empresa</a>
+    <hr />
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th>Cód</th>
+                        <th>Nome</th>
+                        <th>CNPJ</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model.Empresas != null)
+                    {
+                        foreach (var item in Model.Empresas)
+                        {
+                            <tr>
+                                <td>@item.Id</td>
+                                <td>@item.Nome</td>
+                                <td>@item.CNPJ</td>
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        <tr>
+                            <td colspan="3" class="text-center">Não existem dados cadastrados</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

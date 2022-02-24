@@ -1,0 +1,75 @@
+﻿@model XptoOrcamentos.Models.OS.OSViewModelNew
+
+<form asp-action="Create" method="post">
+    <div class="container-fluid small">
+        <div class="row">
+            <div class="col-sm-6">
+                <h4>Nova OS</h4>
+            </div>
+            <div class="col-sm-6 text-right">
+                <a asp-controller="OrdemServico" asp-action="Index"><i class="fas fa-home"></i> Voltar para lista de Ordem de Serviços</a>
+            </div>
+        </div>
+
+        <hr />
+
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <input type="submit" asp-controller="OrdemServico" asp-action="Create" class="btn btn-outline-success" value="Salvar OS" />
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-4">
+                <label asp-for="@Model.IdServico">Serviço</label>
+                <div class="form-group">
+                    <select asp-for="@Model.IdServico" class="form-control" asp-items="@Model.Servico">
+                        <option disabled selected>Selecione um serviço</option>
+                    </select>
+                    <span asp-validation-for="@Model.IdServico" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <label asp-for="@Model.IdContrato">Contrato</label>
+                <div class="form-group">
+                    <select asp-for="@Model.IdContrato" class="form-control" asp-items="@Model.Contrato">
+                        <option disabled selected>Selecione um contrato</option>
+                    </select>
+                    <span asp-validation-for="@Model.IdContrato" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <label asp-for="@Model.IdPrestador">Prestador</label>
+                <div class="form-group">
+                    <select asp-for="@Model.IdPrestador" class="form-control" asp-items="@Model.Prestador">
+                        <option disabled selected>Selecione um prestador</option>
+                    </select>
+                    <span asp-validation-for="@Model.IdPrestador" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-3">
+                <label asp-for="@Model.DataExecucao">Data de Execução</label>
+                <div class="form-group">
+                    <input type="date" asp-for="@Model.DataExecucao" class="form-control" />
+                    <span asp-validation-for="@Model.DataExecucao" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <label asp-for="@Model.ValorServico">Valor do Serviço</label>
+                <div class="form-group">
+                    <input type="text" maxlength="16" asp-for="@Model.ValorServico" class="form-control" />
+                    <span asp-validation-for="@Model.ValorServico" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</form>
+
+@section Scripts {
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial.cshtml");}
+}

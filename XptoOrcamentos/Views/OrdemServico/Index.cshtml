@@ -1,0 +1,51 @@
+﻿@model XptoOrcamentos.Models.OS.OSViewModel
+
+    <form asp-controller="OrdemServico">
+        <div class="container-fluid small">
+            <a asp-action="Create" asp-controller="OrdemServico" class="btn btn-outline-info">Nova OS</a>
+            <hr />
+            <div class="row">
+                <div class="col-md-12">
+                    <table class="table table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <th>Cód</th>
+                                <th>Nº da OS</th>
+                                <th>Título do Serviço</th>
+                                <th>Nome do Cliente</th>
+                                <th>Valor do Serviço</th>
+                                <th>Data da Execução</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (Model.Ordens != null)
+                            {
+                                foreach (var item in Model.Ordens)
+                                {
+                                    <tr>
+                                        <td>@item.Id</td>
+                                        <td>@item.NumeroOs</td>
+                                        <td>@item.Servico</td>
+                                        <td>@item.NomeCliente</td>
+                                        <td>@item.Valor.ToString("C2")</td>
+                                        <td>@item.DataExecucao.ToShortDateString()</td>
+                                        <td>
+                                            <a asp-action="Edit" asp-controller="OrdemServico" asp-route-id="@item.Id" class="btn btn-outline-primary">Editar</a>
+                                            <button type="submit" asp-action="Delete" asp-controller="OrdemServico" asp-route-id="@item.Id" class="btn btn-outline-danger">Excluir</button>
+                                        </td>
+                                    </tr>
+                                }
+                            }
+                            else
+                            {
+                                <tr>
+                                    <td colspan="7" class="text-center">Não existem dados cadastrados</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </form>
